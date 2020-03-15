@@ -31,25 +31,19 @@ interface IDatamapBox {
   mapLayout: MapLayout
 }
 
+const DEFAULT_MAP_LAYOUT = {
+  title: '',
+  legendTitle: '',
+  startColor: 'orange',
+  endColor: 'red',
+  hoverTitle: 'Count',
+  noDataColor: '#f5f5f5',
+  borderColor: '#8D8D8D',
+  hoverColor: 'green'
+}
+
 class DatamapBox extends React.Component<IDatamapBox> {
-  static defaultProps = {
-    regionData: {
-      Maharashtra: 10,
-      Mizoram: 20,
-      Delhi: 12,
-      Karnataka: 5
-    },
-    mapLayout: {
-      title: '',
-      legendTitle: '',
-      startColor: 'orange',
-      endColor: 'red',
-      hoverTitle: 'Count',
-      noDataColor: '#f5f5f5',
-      borderColor: '#8D8D8D',
-      hoverColor: 'green'
-    }
-  }
+  mapLayout = { ...DEFAULT_MAP_LAYOUT, ...this.props.mapLayout }
 
   state = {
     infoWindowPosition: {
@@ -108,7 +102,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
       <div className="DatamapBox">
         <MapElements
           topoData={TOPO_INDIA_DATA}
-          mapLayout={this.props.mapLayout}
+          mapLayout={this.mapLayout}
           regionData={this.props.regionData}
           extremeValues={this.extremeValues}
           mouseMoveOnDatamap={this.mouseMoveOnDatamap}
@@ -122,7 +116,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
           position={this.state.infoWindowPosition}
           name={this.state.activeState.name}
           value={this.state.activeState.value}
-          valueTitle={this.props.mapLayout.hoverTitle || ''}
+          valueTitle={this.mapLayout.hoverTitle || ''}
         />
 
         <TitleStyle />

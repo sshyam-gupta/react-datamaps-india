@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
 
-import ExampleComponent from 'react-datamaps-india'
+import ReactDatamaps from 'react-datamaps-india'
 
 export default class App extends Component {
   render() {
     return (
       <div>
-        <ExampleComponent text="Modern React component module" />
+        <ReactDatamaps regionData={{
+          Maharashtra: 10
+        }} mapLayout={{
+          title: '',
+          legendTitle: '',
+          startColor: 'blue',
+          endColor: 'red',
+          hoverTitle: 'sount',
+          noDataColor: '#f5f5f5',
+          borderColor: '#8D8D8D',
+          hoverColor: 'green'
+        }} />
       </div>
     )
   }
