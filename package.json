@@ -1,6 +1,7 @@
 {
   "name": "react-datamaps-india",
   "version": "0.1.1",
+  "private": false,
   "description": "Datamaps for india region",
   "license": "MIT",
   "author": {

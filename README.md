@@ -4,6 +4,9 @@
 
 [![NPM](https://img.shields.io/npm/v/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Demo 
+[Demo](https://sshyam-gupta.github.io/react-datamaps-india/)
+
 ## Install
 
 ```bash
@@ -61,6 +64,7 @@ height: 500
 
 ### Valid States
 
+```
 Andaman & Nicobar Island
 Andhra Pradesh
 Arunanchal Pradesh
@@ -97,6 +101,7 @@ Tripura
 Uttar Pradesh
 Uttarakhand
 West Bengal
+```
 
 ## License
 
