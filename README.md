@@ -7,7 +7,7 @@
 ## Install
 
 ```bash
-npm install --save react-datamaps-india
+yarn add react-datamaps-india
 ```
 
 ## Usage
@@ -15,12 +15,12 @@ npm install --save react-datamaps-india
 ```tsx
 import * as React from 'react'
 
-import MyComponent from 'react-datamaps-india'
+import DatamapsIndia from 'react-datamaps-india'
 
 class Example extends React.Component {
   render () {
     return (
-      <MyComponent />
+      <DatamapsIndia />
     )
   }
 }
