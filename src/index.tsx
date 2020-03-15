@@ -54,7 +54,8 @@ class DatamapBox extends React.Component<IDatamapBox> {
     activeState: {
       name: '',
       value: 0
-    }
+    },
+    regionData: this.props.regionData
   }
 
   constructor(props: IDatamapBox) {
@@ -63,11 +64,23 @@ class DatamapBox extends React.Component<IDatamapBox> {
     this.mouseEnterOnDatamap = this.mouseEnterOnDatamap.bind(this)
     this.mouseLeaveDatamap = this.mouseLeaveDatamap.bind(this)
     this.mouseEnterOnState = this.mouseEnterOnState.bind(this)
+    this.calculateExtremeValues = this.calculateExtremeValues.bind(this)
   }
 
-  extremeValues = {
-    min: Math.min(...Object.values(this.props.regionData)),
-    max: Math.max(...Object.values(this.props.regionData))
+  static getDerivedStateFromProps(props: IDatamapBox, state: any) {
+    if (props.regionData !== state.regionData) {
+      return {
+        regionData: props.regionData
+      }
+    }
+    return null
+  }
+
+  calculateExtremeValues(region: RegionData) {
+    return {
+      min: Math.min(...Object.values(region)),
+      max: Math.max(...Object.values(region))
+    }
   }
 
   mouseMoveOnDatamap(e: any) {
@@ -99,12 +112,12 @@ class DatamapBox extends React.Component<IDatamapBox> {
 
   render() {
     return (
-      <div className="DatamapBox">
+      <>
         <MapElements
           topoData={TOPO_INDIA_DATA}
           mapLayout={this.mapLayout}
-          regionData={this.props.regionData}
-          extremeValues={this.extremeValues}
+          regionData={this.state.regionData}
+          extremeValues={this.calculateExtremeValues(this.state.regionData)}
           mouseMoveOnDatamap={this.mouseMoveOnDatamap}
           mouseEnterOnDatamap={this.mouseEnterOnDatamap}
           mouseLeaveDatamap={this.mouseLeaveDatamap}
@@ -120,15 +133,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
         />
 
         <TitleStyle />
-        {/*
-        // @ts-ignore */}
-        <style jsx>{`
-          .DatamapBox {
-            height: 100%;
-            position: relative;
-          }
-        `}</style>
-      </div>
+      </>
     )
   }
 }

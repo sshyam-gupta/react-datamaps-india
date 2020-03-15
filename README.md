@@ -55,6 +55,8 @@ hoverTitle: 'Count',
 noDataColor: '#f5f5f5',
 borderColor: '#8D8D8D',
 hoverColor: 'green'
+width: 500
+height: 500
 ```
 
 ### Valid States

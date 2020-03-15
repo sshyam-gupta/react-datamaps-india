@@ -29,7 +29,7 @@ interface MapElementsProps {
 
 const MapElements = (props: MapElementsProps) => {
   const svgWidth = props.mapLayout.width || DEFAULT_WIDTH
-  const svgHeight = props.mapLayout.height || svgWidth * 0.8
+  const svgHeight = props.mapLayout.height || svgWidth
 
   const { mapLayout, extremeValues, regionData } = props
   const { noDataColor, borderColor, hoverColor, startColor, endColor } = mapLayout
@@ -40,10 +40,10 @@ const MapElements = (props: MapElementsProps) => {
     width: svgWidth,
     height: svgHeight,
     margin: 'auto',
-    position: 'absolute',
     top: 15,
     left: 0,
-    right: 0
+    right: 0,
+    display: 'flex'
   }
 
   const colorScale = d3Scale
@@ -101,7 +101,8 @@ const MapElements = (props: MapElementsProps) => {
 const arePropsEqual = (prevProps: MapElementsProps, nextProps: MapElementsProps) => {
   return (
     prevProps.infoWindowPos.x === nextProps.infoWindowPos.x &&
-    prevProps.infoWindowPos.y === nextProps.infoWindowPos.y
+    prevProps.infoWindowPos.y === nextProps.infoWindowPos.y &&
+    prevProps.regionData === nextProps.regionData
   )
 }
 

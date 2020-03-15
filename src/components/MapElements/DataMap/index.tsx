@@ -88,7 +88,7 @@ function path(svgWidth: number, svgHeight: number) {
       return d3
         .geoMercator()
         .center([78, 27])
-        .scale(width)
+        .scale(width * 1.3)
         .translate([width / 2, height / 3])
     }
   }
