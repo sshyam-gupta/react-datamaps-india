@@ -17,12 +17,10 @@ import * as React from 'react'
 
 import DatamapsIndia from 'react-datamaps-india'
 
-class Example extends React.Component {
-  render () {
-    return (
-      <DatamapsIndia />
-    )
-  }
+const Example = () => {
+  return (
+    <DatamapsIndia />
+  )
 }
 ```
 
