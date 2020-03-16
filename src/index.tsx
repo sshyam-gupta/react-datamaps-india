@@ -43,8 +43,6 @@ const DEFAULT_MAP_LAYOUT = {
 }
 
 class DatamapBox extends React.Component<IDatamapBox> {
-  mapLayout = { ...DEFAULT_MAP_LAYOUT, ...this.props.mapLayout }
-
   state = {
     infoWindowPosition: {
       x: 0,
@@ -55,7 +53,8 @@ class DatamapBox extends React.Component<IDatamapBox> {
       name: '',
       value: 0
     },
-    regionData: this.props.regionData
+    regionData: this.props.regionData,
+    mapLayout: { ...DEFAULT_MAP_LAYOUT, ...this.props.mapLayout }
   }
 
   constructor(props: IDatamapBox) {
@@ -70,7 +69,11 @@ class DatamapBox extends React.Component<IDatamapBox> {
   static getDerivedStateFromProps(props: IDatamapBox, state: any) {
     if (props.regionData !== state.regionData) {
       return {
-        regionData: props.regionData
+        regionData: props.regionData,
+      }
+    } else if (props.mapLayout !== state.mapLayout) {
+      return {
+        mapLayout: { ...DEFAULT_MAP_LAYOUT, ...props.mapLayout }
       }
     }
     return null
@@ -115,7 +118,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
       <>
         <MapElements
           topoData={TOPO_INDIA_DATA}
-          mapLayout={this.mapLayout}
+          mapLayout={this.state.mapLayout}
           regionData={this.state.regionData}
           extremeValues={this.calculateExtremeValues(this.state.regionData)}
           mouseMoveOnDatamap={this.mouseMoveOnDatamap}
@@ -129,7 +132,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
           position={this.state.infoWindowPosition}
           name={this.state.activeState.name}
           value={this.state.activeState.value}
-          valueTitle={this.mapLayout.hoverTitle || ''}
+          valueTitle={this.state.mapLayout.hoverTitle || ''}
         />
 
         <TitleStyle />
