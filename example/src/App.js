@@ -93,7 +93,7 @@ export default class App extends Component {
             ))}
           </table>
         </div>
-        <style jsx>{`
+        <style>{`
           .container {
             display: flex;
           }

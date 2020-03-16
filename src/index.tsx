@@ -43,6 +43,9 @@ const DEFAULT_MAP_LAYOUT = {
 }
 
 class DatamapBox extends React.Component<IDatamapBox> {
+  static defaultProps = {
+    regionData: {}
+  }
   state = {
     infoWindowPosition: {
       x: 0,

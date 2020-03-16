@@ -3,9 +3,7 @@ import * as React from 'react'
 function TitleStyle() {
   return (
     <div>
-      {/*
-      // @ts-ignore */}
-      <style jsx global="true">{`
+      <style>{`
         .map-title {
           text-anchor: start;
           font-size: 25px;

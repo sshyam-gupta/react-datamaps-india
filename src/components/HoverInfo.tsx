@@ -29,7 +29,7 @@ function HoverInfo(props: HoverInfoProps) {
       )}
       {/*
       // @ts-ignore */}
-      <style jsx>{`
+      <style>{`
         .HoverInfo {
           position: fixed;
           min-width: 100px;
