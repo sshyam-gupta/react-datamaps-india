@@ -8,6 +8,7 @@ interface DatamapStateProps {
   fillColor: string
   hoverColor?: string
   borderColor: string
+  hoverBorderColor?: string
   index: number
 }
 
@@ -39,7 +40,7 @@ class DatamapState extends React.Component<DatamapStateProps> {
   render() {
     const stateStyle = {
       fill: this.state.isActive ? this.props.hoverColor || '#FFCCBC' : this.props.fillColor,
-      stroke: this.state.isActive ? this.props.hoverColor || '#FF5722' : this.props.borderColor,
+      stroke: this.state.isActive ? this.props.hoverBorderColor || '#FF5722' : this.props.borderColor,
       strokeWidth: 0.5
     }
     return (

@@ -16,7 +16,8 @@ interface DataMapProps {
   regionData: RegionData
   noDataColor: string
   borderColor: string
-  hoverColor: string
+  hoverColor?: string
+  hoverBorderColor?: string
 }
 
 class DataMap extends React.Component<DataMapProps> {
@@ -46,7 +47,7 @@ class DataMap extends React.Component<DataMapProps> {
   }
 
   renderDatamapStates() {
-    const { colorScale, noDataColor, borderColor, hoverColor } = this.props
+    const { colorScale, noDataColor, borderColor, hoverColor, hoverBorderColor } = this.props
 
     return this.state.topoJSONfeatures.map((feature, index) => {
       const stateValue = this.props.regionData[feature.properties.name]
@@ -63,6 +64,7 @@ class DataMap extends React.Component<DataMapProps> {
           fillColor={fillColor}
           hoverColor={hoverColor}
           borderColor={borderColor}
+          hoverBorderColor={hoverBorderColor}
           mouseEnterOnState={this.handleMouseEnterOnState}
         />
       )
@@ -89,7 +91,7 @@ function path(svgWidth: number, svgHeight: number) {
         .geoMercator()
         .center([78, 27])
         .scale(width * 1.3)
-        .translate([width / 2, height / 3])
+        .translate([width / 2.5, height / 3])
     }
   }
   const projection = mapConfig.projection(svgWidth, svgHeight)

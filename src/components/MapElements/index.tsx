@@ -32,7 +32,7 @@ const MapElements = (props: MapElementsProps) => {
   const svgHeight = props.mapLayout.height || svgWidth
 
   const { mapLayout, extremeValues, regionData } = props
-  const { noDataColor, borderColor, hoverColor, startColor, endColor } = mapLayout
+  const { noDataColor, borderColor, hoverColor, startColor, endColor, hoverBorderColor } = mapLayout
 
   const { min: minValue, max: maxValue } = extremeValues
 
@@ -80,6 +80,7 @@ const MapElements = (props: MapElementsProps) => {
           noDataColor={noDataColor}
           borderColor={borderColor}
           hoverColor={hoverColor}
+          hoverBorderColor={hoverBorderColor}
           mouseMoveOnDatamap={props.mouseMoveOnDatamap}
           mouseEnterOnDatamap={props.mouseEnterOnDatamap}
           mouseLeaveDatamap={props.mouseLeaveDatamap}

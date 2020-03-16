@@ -17,7 +17,8 @@ export interface MapLayout {
   hoverTitle: string
   noDataColor: string
   borderColor: string
-  hoverColor: string
+  hoverColor?: string
+  hoverBorderColor?: string
   width?: number
   height?: number
 }

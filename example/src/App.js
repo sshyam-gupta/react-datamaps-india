@@ -72,6 +72,7 @@ export default class App extends Component {
               hoverTitle: 'Count',
               noDataColor: '#f5f5f5',
               borderColor: '#8D8D8D',
+              hoverBorderColor: 'pink',
               hoverColor: 'green'
             }}
           />
