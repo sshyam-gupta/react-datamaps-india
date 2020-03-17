@@ -18,6 +18,7 @@ export interface MapLayout {
   noDataColor: string
   borderColor: string
   hoverColor?: string
+  hoverName?: string
   hoverBorderColor?: string
   width?: number
   height?: number
@@ -34,6 +35,7 @@ interface IDatamapBox {
 
 const DEFAULT_MAP_LAYOUT = {
   title: '',
+  hoverName: '',
   legendTitle: '',
   startColor: 'orange',
   endColor: 'red',
@@ -134,7 +136,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
         <HoverInfo
           active={this.state.isInfoWindowActive}
           position={this.state.infoWindowPosition}
-          name={this.state.activeState.name}
+          name={this.state.mapLayout.hoverName || this.state.activeState.name}
           value={this.state.activeState.value}
           valueTitle={this.state.mapLayout.hoverTitle || ''}
         />

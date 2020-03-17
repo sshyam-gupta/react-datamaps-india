@@ -20,7 +20,7 @@ function HoverInfo(props: HoverInfoProps) {
 
   return (
     <div className="HoverInfo" style={hoverInfoStyle}>
-      <p>{props.name}</p>
+      <p>{props.name === 'Jammu & Kashmir' ? 'Jammu & Kashmir + Ladakh' : props.name}</p>
       {isFinite(props.value) && (
         <p>
           {props.valueTitle ? `${props.valueTitle}: ` : ''}
