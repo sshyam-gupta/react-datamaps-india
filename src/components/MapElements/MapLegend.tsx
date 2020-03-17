@@ -25,7 +25,7 @@ function renderGradient({ svgHeight, svgWidth, mapLayout }: Omit<MapLegendProps,
     .map((_, i) => (
       <rect
         key={i}
-        x={svgWidth - 280 + i * 5}
+        x={svgWidth - 380 + i * 5}
         y={svgHeight - 50}
         width={5}
         height="10"
@@ -55,12 +55,12 @@ const MapLegend = ({
     <g>
       {/*
       // @ts-ignore */}
-      <text x={svgWidth - 280} y={svgHeight - 60} style={TEXT_STYLE}>
+      <text x={svgWidth - 380} y={svgHeight - 60} style={TEXT_STYLE}>
         {min}
       </text>
       {/*
       // @ts-ignore */}
-      <text x={svgWidth - 80} y={svgHeight - 60} style={TEXT_STYLE}>
+      <text x={svgWidth - 180} y={svgHeight - 60} style={TEXT_STYLE}>
         {max}
       </text>
       {renderGradient({ svgWidth, svgHeight, mapLayout })}
