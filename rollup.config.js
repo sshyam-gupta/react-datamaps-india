@@ -5,6 +5,7 @@ import json from '@rollup/plugin-json'
 import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
+import analyze from 'rollup-plugin-analyzer'
 
 import pkg from './package.json'
 
@@ -36,6 +37,7 @@ export default {
       rollupCommonJSResolveHack: true,
       clean: true
     }),
-    commonjs()
+    commonjs(),
+    analyze()
   ]
 }
