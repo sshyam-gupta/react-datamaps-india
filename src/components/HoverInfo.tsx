@@ -8,7 +8,8 @@ interface HoverInfoProps {
   active: boolean
   valueTitle?: string
   name: string
-  value: number
+  value: any
+  hoverComponent?: any
 }
 
 function HoverInfo(props: HoverInfoProps) {
@@ -18,14 +19,20 @@ function HoverInfo(props: HoverInfoProps) {
     display: props.active ? 'block' : 'none'
   }
 
+  const HoverComponent = props.hoverComponent
+
   return (
     <div className="HoverInfo" style={hoverInfoStyle}>
-      <p>{props.name === 'Jammu & Kashmir' ? 'Jammu & Kashmir + Ladakh' : props.name}</p>
-      {isFinite(props.value) && (
-        <p>
-          {props.valueTitle ? `${props.valueTitle}: ` : ''}
-          {props.value}
-        </p>
+      {props.hoverComponent ? <HoverComponent value={{...props.value, name: props.name}} /> : (
+        <>
+          <p>{props.name}</p>
+          {isFinite(props.value) && (
+            <p>
+              {props.valueTitle ? `${props.valueTitle}: ` : ''}
+              {props.value}
+            </p>
+          )}
+        </>
       )}
       {/*
       // @ts-ignore */}
@@ -35,12 +42,12 @@ function HoverInfo(props: HoverInfoProps) {
           min-width: 100px;
           background-color: white;
           box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
-          padding: 5px;
+          padding: 7px;
           border-radius: 4px;
         }
         .HoverInfo p {
           margin: 0;
-          font-size: 0.8em;
+          font-size: 0.9em;
         }
       `}</style>
     </div>

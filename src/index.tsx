@@ -25,12 +25,16 @@ export interface MapLayout {
 }
 
 export interface RegionData {
-  [key: string]: number
+  [key: string]: {
+    value: number
+    [key: string]: any
+  }
 }
 
 interface IDatamapBox {
   regionData: RegionData
   mapLayout: MapLayout
+  hoverComponent?: any
 }
 
 const DEFAULT_MAP_LAYOUT = {
@@ -85,10 +89,12 @@ class DatamapBox extends React.Component<IDatamapBox> {
     return null
   }
 
-  calculateExtremeValues(region: RegionData) {
+  calculateExtremeValues(regions: RegionData) {
+    const regionValues: any[] = Object.values(regions).map(region => region.value ?? region)
+
     return {
-      min: Math.min(...Object.values(region)),
-      max: Math.max(...Object.values(region))
+      min: Math.min(...regionValues),
+      max: Math.max(...regionValues)
     }
   }
 
@@ -139,6 +145,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
           name={this.state.mapLayout.hoverName || this.state.activeState.name}
           value={this.state.activeState.value}
           valueTitle={this.state.mapLayout.hoverTitle || ''}
+          hoverComponent={this.props.hoverComponent}
         />
 
         <TitleStyle />

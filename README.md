@@ -24,7 +24,9 @@ const Example = () => {
   return (
     <DatamapsIndia
       regionData={{
-        Maharashtra: 10
+        Maharashtra: {
+          value: 10
+        }
       }}
       mapLayout={{
         title: '',

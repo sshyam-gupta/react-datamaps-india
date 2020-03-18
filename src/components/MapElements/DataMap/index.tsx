@@ -51,8 +51,7 @@ class DataMap extends React.Component<DataMapProps> {
 
     return this.state.topoJSONfeatures.map((feature, index) => {
       const stateValue = this.props.regionData[feature.properties.name]
-      const fillColor = !stateValue ? noDataColor : colorScale(stateValue)
-
+      const fillColor = !stateValue ? noDataColor : colorScale(stateValue.value)
       return (
         <DataMapState
           key={feature.id}
@@ -60,12 +59,12 @@ class DataMap extends React.Component<DataMapProps> {
           // @ts-ignore
           path={() => this.drawPath(feature)}
           name={feature.properties.name}
-          value={stateValue}
           fillColor={fillColor}
           hoverColor={hoverColor}
           borderColor={borderColor}
           hoverBorderColor={hoverBorderColor}
           mouseEnterOnState={this.handleMouseEnterOnState}
+          value={stateValue}
         />
       )
     })
@@ -91,7 +90,7 @@ function path(svgWidth: number, svgHeight: number) {
         .geoMercator()
         .center([78, 27])
         .scale(width * 1.3)
-        .translate([width / 3.5, height / 3])
+        .translate([width / 2.75, height / 3])
     }
   }
   const projection = mapConfig.projection(svgWidth, svgHeight)

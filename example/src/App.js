@@ -3,42 +3,19 @@ import React, { Component } from 'react'
 import ReactDatamaps from 'react-datamaps-india'
 
 const STATES = {
-  'Andaman & Nicobar Island': 0,
-  'Andhra Pradesh': 0,
-  'Arunanchal Pradesh': 0,
-  Assam: 0,
-  Bihar: 0,
-  Chandigarh: 0,
-  Chhattisgarh: 0,
-  'Dadara & Nagar Haveli': 0,
-  'Daman & Diu': 0,
-  Delhi: 0,
-  Goa: 0,
-  Gujarat: 0,
-  Haryana: 0,
-  'Himachal Pradesh': 0,
-  'Jammu & Kashmir': 0,
-  Jharkhand: 0,
-  Karnataka: 0,
-  Kerala: 0,
-  Lakshadweep: 0,
-  'Madhya Pradesh': 0,
-  Maharashtra: 0,
-  Manipur: 0,
-  Meghalaya: 0,
-  Mizoram: 0,
-  Nagaland: 0,
-  Odisha: 0,
-  Puducherry: 0,
-  Punjab: 0,
-  Rajasthan: 0,
-  Sikkim: 0,
-  'Tamil Nadu': 0,
-  Telangana: 0,
-  Tripura: 0,
-  'Uttar Pradesh': 0,
-  Uttarakhand: 0,
-  'West Bengal': 0
+  'Andaman & Nicobar Island': {
+    value: 20,
+    tesg: 23
+  },
+  'Andhra Pradesh': {
+    value: 0
+  },
+  'Arunanchal Pradesh': {
+    value: 0
+  },
+  Assam: {
+    value: 0
+  },
 }
 
 export default class App extends Component {
@@ -52,7 +29,9 @@ export default class App extends Component {
     const target = e.target
     if (!isFinite(target.value) || isNaN(target.value)) return
     this.setState({
-      [target.name]: isFinite(parseInt(target.value)) ? parseInt(target.value) : 0
+      [target.name]: {
+        value: isFinite(parseInt(target.value)) ? parseInt(target.value) : 0
+      }
     })
   }
 
@@ -75,6 +54,14 @@ export default class App extends Component {
               hoverBorderColor: 'pink',
               hoverColor: 'green'
             }}
+            hoverComponent={({ value }) => {
+            return (
+              <>
+                <p>{value.name}</p>
+                <p>{value.value}</p>
+              </>
+            )
+            }}
           />
         </div>
         <div className="editor">
@@ -88,7 +75,7 @@ export default class App extends Component {
               <tr key={key}>
                 <td>{key}</td>
                 <td>
-                  <input name={key} value={value} onChange={this.onCountChange} />
+                  <input name={key} value={value.value} onChange={this.onCountChange} />
                 </td>
               </tr>
             ))}

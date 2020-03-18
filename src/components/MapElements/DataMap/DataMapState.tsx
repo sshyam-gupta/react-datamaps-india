@@ -4,7 +4,7 @@ interface DatamapStateProps {
   path(): string
   mouseEnterOnState(name: string, value: number, index: number): void
   name: string
-  value: number
+  value: any
   fillColor: string
   hoverColor?: string
   borderColor: string
