@@ -39,12 +39,17 @@ export default class App extends Component {
     const { startColor, endColor, ...regionData } = this.state
     return (
       <div className="container">
-        <div style={{ flex: 1 }}>
+        <div style={{ flex: 1, display: 'inline-block',
+    position: 'relative',
+    width: '100%',
+    paddingBottom: '100%',
+    verticalAlign: 'top',
+    overflow: 'hidden', }}>
           <ReactDatamaps
             regionData={regionData}
             mapLayout={{
               title: '',
-              width: 700,
+              width: '',
               legendTitle: '',
               startColor,
               endColor,

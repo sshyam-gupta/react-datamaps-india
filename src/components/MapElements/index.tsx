@@ -7,7 +7,7 @@ import DataMap from './DataMap'
 import MapLegend from './MapLegend'
 import { RegionData, MapLayout } from '../../index'
 
-const DEFAULT_WIDTH = 800
+const DEFAULT_WIDTH = 400
 
 interface MapElementsProps {
   mouseMoveOnDatamap(data: any): void
@@ -28,8 +28,8 @@ interface MapElementsProps {
 }
 
 const MapElements = (props: MapElementsProps) => {
-  const svgWidth = props.mapLayout.width || DEFAULT_WIDTH
-  const svgHeight = props.mapLayout.height || svgWidth
+  const svgWidth = DEFAULT_WIDTH
+  const svgHeight = svgWidth
 
   const { mapLayout, extremeValues, regionData } = props
   const { noDataColor, borderColor, hoverColor, startColor, endColor, hoverBorderColor } = mapLayout
@@ -37,13 +37,10 @@ const MapElements = (props: MapElementsProps) => {
   const { min: minValue, max: maxValue } = extremeValues
 
   const svgStyle = {
-    width: svgWidth,
-    height: svgHeight,
-    margin: 'auto',
-    top: 15,
+    display: 'inline-block',
+    position: 'absolute',
+    top: 0,
     left: 0,
-    right: 0,
-    display: 'flex'
   }
 
   const colorScale = d3Scale
@@ -67,7 +64,7 @@ const MapElements = (props: MapElementsProps) => {
 
   return (
     // @ts-ignore
-    <svg style={svgStyle}>
+    <svg style={svgStyle} preserveAspectRatio="xMinYMin meet" viewBox="0 0 400 400">
       <g id="root-svg-group">
         <Title text={props.mapLayout.title} className="map-title" coords={{ x: 30, y: 40 }} />
 
@@ -90,7 +87,7 @@ const MapElements = (props: MapElementsProps) => {
         <Title
           text={props.mapLayout.legendTitle}
           className="legend-title"
-          coords={{ x: svgWidth - 80, y: svgHeight - 85 }}
+          coords={{ x: svgWidth - 200, y: svgHeight - 85 }}
         />
 
         {isNotExtremeValuesEmpty && mapLegend}

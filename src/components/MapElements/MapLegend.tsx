@@ -3,7 +3,7 @@ import * as d3Scale from 'd3-scale'
 import * as d3Interpolate from 'd3-interpolate'
 import { MapLayout } from '../../index'
 
-const TEXT_STYLE = { textAnchor: 'middle', fontSize: 10, fill: '#333' }
+const TEXT_STYLE = { textAnchor: 'middle', fontSize: 7, fill: '#333' }
 
 function linearColorScale(value: number, mapLayout: MapLayout) {
   const startColor = mapLayout.startColor
@@ -25,11 +25,11 @@ function renderGradient({ svgHeight, svgWidth, mapLayout }: Omit<MapLegendProps,
     .map((_, i) => (
       <rect
         key={i}
-        x={svgWidth - 330 + i * 5}
+        x={svgWidth - 280 + i * 4}
         y={svgHeight - 50}
         width={5}
-        height="10"
-        fill={linearColorScale(i * 5, mapLayout)}
+        height="5"
+        fill={linearColorScale(i * 4, mapLayout)}
         stroke="none"
       />
     ))
@@ -55,12 +55,12 @@ const MapLegend = ({
     <g>
       {/*
       // @ts-ignore */}
-      <text x={svgWidth - 330} y={svgHeight - 60} style={TEXT_STYLE}>
+      <text x={svgWidth - 280} y={svgHeight - 60} style={TEXT_STYLE}>
         {min}
       </text>
       {/*
       // @ts-ignore */}
-      <text x={svgWidth - 130} y={svgHeight - 60} style={TEXT_STYLE}>
+      <text x={svgWidth - 120} y={svgHeight - 60} style={TEXT_STYLE}>
         {max}
       </text>
       {renderGradient({ svgWidth, svgHeight, mapLayout })}

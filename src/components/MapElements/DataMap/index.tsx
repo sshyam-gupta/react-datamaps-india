@@ -90,7 +90,7 @@ function path(svgWidth: number, svgHeight: number) {
         .geoMercator()
         .center([78, 27])
         .scale(width * 1.3)
-        .translate([width / 2.75, height / 3])
+        .translate([width / 2.5, height / 3])
     }
   }
   const projection = mapConfig.projection(svgWidth, svgHeight)
