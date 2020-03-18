@@ -21,8 +21,8 @@ const STATES = {
 export default class App extends Component {
   state = {
     ...STATES,
-    startColor: 'green',
-    endColor: 'blue'
+    startColor: '#FFDAB9',
+    endColor: '#FF6347'
   }
 
   onCountChange = e => {
