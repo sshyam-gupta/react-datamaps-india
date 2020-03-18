@@ -11,7 +11,7 @@
 ## Install
 
 ```bash
-yarn add react-datamaps-india
+yarn add react-datamaps-india d3-interpolate d3-scale
 ```
 
 ## Usage
