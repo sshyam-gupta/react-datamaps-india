@@ -12,7 +12,7 @@ function linearColorScale(value: number, mapLayout: MapLayout) {
   return (
     d3Scale
       .scaleLinear()
-      .domain([0, 200])
+      .domain([0, 130])
       // @ts-ignore
       .range([startColor, endColor])
       .interpolate(d3Interpolate.interpolateLab)(value)
