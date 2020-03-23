@@ -102,7 +102,8 @@ class DatamapBox extends React.Component<IDatamapBox> {
       activeState: {
         name: '',
         value: 0
-      }
+      },
+      isInfoWindowActive: false
     })
   }
 
@@ -117,7 +118,8 @@ class DatamapBox extends React.Component<IDatamapBox> {
 
   mouseMoveOnDatamap(e: any) {
     this.setState({
-      infoWindowPosition: { x: e.clientX, y: e.clientY }
+      infoWindowPosition: { x: e.clientX, y: e.clientY },
+      isInfoWindowActive: true
     })
   }
 
@@ -156,7 +158,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
           mouseEnterOnState={this.mouseEnterOnState}
           infoWindowPos={this.state.infoWindowPosition}
         />
-        {this.state.activeState.name || this.state.mapLayout.hoverName ? (
+        {this.state.mapLayout.hoverName || this.state.activeState.name ? (
           <HoverInfo
             active={this.state.isInfoWindowActive}
             position={this.state.infoWindowPosition}
