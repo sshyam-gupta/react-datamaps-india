@@ -38,7 +38,7 @@ class HoverInfo extends React.Component<HoverInfoProps> {
         )}
         <style>{`
           .HoverInfo {
-            position: absolute;
+            position: fixed;
             min-width: 8ch;
             background-color: white;
             box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);

@@ -76,6 +76,14 @@ class DatamapBox extends React.Component<IDatamapBox> {
     this.calculateExtremeValues = this.calculateExtremeValues.bind(this)
   }
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  }
+
   static getDerivedStateFromProps(props: IDatamapBox, state: any) {
     if (props.regionData !== state.regionData) {
       return {
@@ -87,6 +95,15 @@ class DatamapBox extends React.Component<IDatamapBox> {
       }
     }
     return null
+  }
+
+  handleScroll = () => {
+    this.setState({
+      activeState: {
+        name: '',
+        value: 0
+      }
+    })
   }
 
   calculateExtremeValues(regions: RegionData) {
@@ -139,14 +156,16 @@ class DatamapBox extends React.Component<IDatamapBox> {
           mouseEnterOnState={this.mouseEnterOnState}
           infoWindowPos={this.state.infoWindowPosition}
         />
-        <HoverInfo
-          active={this.state.isInfoWindowActive}
-          position={this.state.infoWindowPosition}
-          name={this.state.mapLayout.hoverName || this.state.activeState.name}
-          value={this.state.activeState.value}
-          valueTitle={this.state.mapLayout.hoverTitle || ''}
-          hoverComponent={this.props.hoverComponent}
-        />
+        {this.state.activeState.name || this.state.mapLayout.hoverName ? (
+          <HoverInfo
+            active={this.state.isInfoWindowActive}
+            position={this.state.infoWindowPosition}
+            name={this.state.mapLayout.hoverName || this.state.activeState.name}
+            value={this.state.activeState.value}
+            valueTitle={this.state.mapLayout.hoverTitle || ''}
+            hoverComponent={this.props.hoverComponent}
+          />
+        ) : null}
 
         <TitleStyle />
       </>
