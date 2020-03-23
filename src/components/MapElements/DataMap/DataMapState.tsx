@@ -23,12 +23,21 @@ class DatamapState extends React.Component<DatamapStateProps> {
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
   }
 
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleMouseLeave)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleMouseLeave);
+  }
+
   handleMouseEnter() {
     const { name, value, index } = this.props
-    this.props.mouseEnterOnState(name, value, index)
+
     this.setState({
       isActive: true
     })
+    this.props.mouseEnterOnState(name, value, index)
   }
 
   handleMouseLeave() {

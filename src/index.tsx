@@ -77,11 +77,11 @@ class DatamapBox extends React.Component<IDatamapBox> {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll)
+    window.addEventListener('scroll', this.mouseLeaveDatamap)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.mouseLeaveDatamap);
   }
 
   static getDerivedStateFromProps(props: IDatamapBox, state: any) {
@@ -95,16 +95,6 @@ class DatamapBox extends React.Component<IDatamapBox> {
       }
     }
     return null
-  }
-
-  handleScroll = () => {
-    this.setState({
-      activeState: {
-        name: '',
-        value: 0
-      },
-      isInfoWindowActive: false
-    })
   }
 
   calculateExtremeValues(regions: RegionData) {
@@ -140,7 +130,8 @@ class DatamapBox extends React.Component<IDatamapBox> {
       activeState: {
         name,
         value
-      }
+      },
+      isInfoWindowActive: true
     })
   }
 
