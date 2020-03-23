@@ -12,46 +12,47 @@ interface HoverInfoProps {
   hoverComponent?: any
 }
 
-function HoverInfo(props: HoverInfoProps) {
-  const hoverInfoStyle = {
-    left: props.position.x + 20,
-    top: props.position.y - 90 + 20,
-    display: props.active ? 'block' : 'none'
+class HoverInfo extends React.Component<HoverInfoProps> {
+  refHoverInfo: any
+
+  render() {
+    const hoverInfoStyle = {
+      left: this.props.position.x - 50,
+      top: this.props.position.y - (this.refHoverInfo?.offsetHeight ?? 0) - 20,
+      display: this.props.active ? 'block' : 'none'
+    }
+
+    const HoverComponent = this.props.hoverComponent
+    return (
+      <div ref={(ref) => this.refHoverInfo = ref} className="HoverInfo" style={hoverInfoStyle}>
+        {this.props.hoverComponent ? <HoverComponent value={{ ...this.props.value, name: this.props.name }} /> : (
+          <>
+            <p>{this.props.name}</p>
+            {isFinite(this.props.value) && (
+              <p>
+                {this.props.valueTitle ? `${this.props.valueTitle}: ` : ''}
+                {this.props.value}
+              </p>
+            )}
+          </>
+        )}
+        <style>{`
+          .HoverInfo {
+            position: absolute;
+            min-width: 8ch;
+            background-color: white;
+            box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
+            padding: 7px;
+            border-radius: 4px;
+          }
+          .HoverInfo p {
+            margin: 0;
+            font-size: 0.9em;
+          }
+        `}</style>
+      </div>
+    )
   }
-
-  const HoverComponent = props.hoverComponent
-
-  return (
-    <div className="HoverInfo" style={hoverInfoStyle}>
-      {props.hoverComponent ? <HoverComponent value={{...props.value, name: props.name}} /> : (
-        <>
-          <p>{props.name}</p>
-          {isFinite(props.value) && (
-            <p>
-              {props.valueTitle ? `${props.valueTitle}: ` : ''}
-              {props.value}
-            </p>
-          )}
-        </>
-      )}
-      {/*
-      // @ts-ignore */}
-      <style>{`
-        .HoverInfo {
-          position: fixed;
-          min-width: 100px;
-          background-color: white;
-          box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
-          padding: 7px;
-          border-radius: 4px;
-        }
-        .HoverInfo p {
-          margin: 0;
-          font-size: 0.9em;
-        }
-      `}</style>
-    </div>
-  )
 }
 
 export default HoverInfo
