@@ -1,6 +1,6 @@
 {
   "name": "react-datamaps-india",
-  "version": "0.3.5",
+  "version": "0.3.6",
   "private": false,
   "description": "Datamaps for india region",
   "license": "MIT",
@@ -28,12 +28,11 @@
   },
   "dependencies": {
     "d3-geo": "^1.11.9",
+    "d3-interpolate": "^1.4.0",
+    "d3-scale": "^3.2.1",
     "topojson-client": "^3.1.0"
   },
   "peerDependencies": {
-    "d3-geo": "^1.11.9",
-    "d3-interpolate": "^1.4.0",
-    "d3-scale": "^3.2.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0"
   },
