@@ -29,6 +29,9 @@ const Example = () => {
           value: 10
         }
       }}
+      hoverComponent={({ value }) => {
+        return <span>{value}</span>
+      }}
       mapLayout={{
         title: '',
         legendTitle: '',
