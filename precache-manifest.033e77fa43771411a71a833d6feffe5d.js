@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "525c359ceb66e0a07852b820a122cc5e",
+    "revision": "92f2b4559b5979e9a62b7954f5e60cae",
     "url": "/react-datamaps-india/index.html"
   },
   {
-    "revision": "8176ae0176228b2526bc",
+    "revision": "db98327b7f0749d0b07b",
     "url": "/react-datamaps-india/static/css/main.a2b7b0b6.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/react-datamaps-india/static/js/2.412f0c34.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "8176ae0176228b2526bc",
-    "url": "/react-datamaps-india/static/js/main.72985b51.chunk.js"
+    "revision": "db98327b7f0749d0b07b",
+    "url": "/react-datamaps-india/static/js/main.197adce0.chunk.js"
   },
   {
     "revision": "dab1055056546f6623ec",
