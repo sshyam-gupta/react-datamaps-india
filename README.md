@@ -6,7 +6,7 @@
 
 
 ## Demo 
-[Demo](https://sshyam-gupta.github.io/react-datamaps-india/)
+[Demo](https://react-datamaps.netlify.app/)
 
 ## Install
 

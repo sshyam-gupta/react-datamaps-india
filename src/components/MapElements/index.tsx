@@ -87,7 +87,7 @@ const MapElements = (props: MapElementsProps) => {
         <Title
           text={props.mapLayout.legendTitle}
           className="legend-title"
-          coords={{ x: svgWidth - 180, y: svgHeight - 35 }}
+          coords={{ x: svgWidth - 190, y: svgHeight - 35 }}
         />
 
         {isNotExtremeValuesEmpty && mapLegend}
