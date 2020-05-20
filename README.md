@@ -33,10 +33,10 @@ const Example = () => {
         return <span>{value}</span>
       }}
       mapLayout={{
-        title: '',
-        legendTitle: '',
-        startColor: 'blue',
-        endColor: 'red',
+        title: 'Title',
+        legendTitle: 'Legend Title',
+        startColor: '#FFDAB9',
+        endColor: '#FF6347'
         hoverTitle: 'Count',
         noDataColor: '#f5f5f5',
         borderColor: '#8D8D8D',

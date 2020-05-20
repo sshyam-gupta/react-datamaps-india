@@ -6,13 +6,13 @@ function TitleStyle() {
       <style>{`
         .map-title {
           text-anchor: start;
-          font-size: 25px;
+          font-size: 18px;
         }
 
         .legend-title {
           fill: gray;
           text-anchor: end;
-          font-size: 12px;
+          font-size: 8px;
         }
       `}</style>
     </div>

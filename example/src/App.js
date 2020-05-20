@@ -48,9 +48,9 @@ export default class App extends Component {
           <ReactDatamaps
             regionData={regionData}
             mapLayout={{
-              title: '',
+              title: 'Title',
               width: '',
-              legendTitle: '',
+              legendTitle: 'Legend',
               startColor,
               endColor,
               hoverTitle: 'Count',

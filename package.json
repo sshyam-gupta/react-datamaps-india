@@ -1,6 +1,6 @@
 {
   "name": "react-datamaps-india",
-  "version": "0.3.6",
+  "version": "0.4.0",
   "private": false,
   "description": "Datamaps for india region",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "build": "rollup -c",
     "start": "rollup -c -w",
     "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
+    "build:example": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build"
   },
   "dependencies": {
