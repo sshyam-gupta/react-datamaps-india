@@ -43,7 +43,7 @@ const MapElements = (props: MapElementsProps) => {
 
   const { min: minValue, max: maxValue } = extremeValues;
 
-  const svgStyle = {
+  const svgStyle: React.CSSProperties = {
     display: "inline-block",
     position: "absolute",
     top: 0,
@@ -73,7 +73,6 @@ const MapElements = (props: MapElementsProps) => {
     isFinite(maxValue);
 
   return (
-    // @ts-ignore
     <svg
       style={svgStyle}
       preserveAspectRatio="xMinYMin meet"
