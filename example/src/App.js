@@ -1,71 +1,74 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
-import ReactDatamaps from 'react-datamaps-india'
+import ReactDatamaps from "react-datamaps-india";
 
 const STATES = {
-  'Andaman & Nicobar Island': {
+  "Andaman & Nicobar Island": {
     value: 20,
-    tesg: 23
   },
-  'Andhra Pradesh': {
+  "Andhra Pradesh": {
     value: 0
   },
-  'Arunanchal Pradesh': {
+  "Arunanchal Pradesh": {
     value: 0
   },
   Assam: {
     value: 0
   },
-}
+  Maharashtra: {
+    value: 50
+  },
+};
 
 export default class App extends Component {
-  state = {
-    ...STATES,
-    startColor: '#FFDAB9',
-    endColor: '#FF6347'
-  }
+  state = STATES;
 
   onCountChange = e => {
-    const target = e.target
-    if (!isFinite(target.value) || isNaN(target.value)) return
+    const target = e.target;
+    if (!isFinite(target.value) || isNaN(target.value)) return;
     this.setState({
       [target.name]: {
         value: isFinite(parseInt(target.value)) ? parseInt(target.value) : 0
       }
-    })
-  }
+    });
+  };
 
   render() {
-    const { startColor, endColor, ...regionData } = this.state
+    const { startColor, endColor, ...regionData } = this.state;
     return (
       <div className="container">
-        <div style={{ flex: 1, display: 'inline-block',
-    position: 'relative',
-    width: '100%',
-    paddingBottom: '100%',
-    verticalAlign: 'top',
-    overflow: 'hidden', }}>
+        <div
+          style={{
+            flex: 1,
+            display: "inline-block",
+            position: "relative",
+            width: "100%",
+            paddingBottom: "100%",
+            verticalAlign: "top",
+            overflow: "hidden"
+          }}
+        >
           <ReactDatamaps
             regionData={regionData}
             mapLayout={{
-              title: 'Title',
-              width: '',
-              legendTitle: 'Legend',
-              startColor,
-              endColor,
-              hoverTitle: 'Count',
-              noDataColor: '#f5f5f5',
-              borderColor: '#8D8D8D',
-              hoverBorderColor: 'pink',
-              hoverColor: 'green'
+              title: "Title",
+              width: "",
+              legendTitle: "Legend",
+              startColor: "#FFDAB9",
+              endColor: "#FF6347",
+              hoverTitle: "Count",
+              noDataColor: "#f5f5f5",
+              borderColor: "#8D8D8D",
+              hoverBorderColor: "pink",
+              hoverColor: "green"
             }}
             hoverComponent={({ value }) => {
-            return (
-              <>
-                <p>{value.name}</p>
-                <p>{value.value}</p>
-              </>
-            )
+              return (
+                <>
+                  <p>{value.name}</p>
+                  <p>{value.value}</p>
+                </>
+              );
             }}
           />
         </div>
@@ -80,7 +83,11 @@ export default class App extends Component {
               <tr key={key}>
                 <td>{key}</td>
                 <td>
-                  <input name={key} value={value.value} onChange={this.onCountChange} />
+                  <input
+                    name={key}
+                    value={value.value}
+                    onChange={this.onCountChange}
+                  />
                 </td>
               </tr>
             ))}
@@ -115,6 +122,6 @@ export default class App extends Component {
           }
         `}</style>
       </div>
-    )
+    );
   }
 }
