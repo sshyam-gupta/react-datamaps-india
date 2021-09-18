@@ -28,10 +28,10 @@
     "build:umd": "node tools/cleanup umd && webpack --config config/webpack.config.js",
     "build:types": "node tools/cleanup types && tsc -p config/tsconfig.types.json",
     "clean": "node tools/cleanup",
-    "package": "yarn build && npm pack",
+    "package": "yarn build && yarn pack",
     "build:example": "cd example && yarn install && yarn run build",
     "deploy": "gh-pages -d example/build",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --ignore-path .gitignore --write './**/*.{js,jsx,ts,tsx,json}'"
   },
   "dependencies": {
     "d3-geo": "^3.0.1",
@@ -60,7 +60,6 @@
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "file-loader": "^6.2.0",
     "gh-pages": "^3.2.3",
     "husky": "^7.0.2",
     "install-peers-cli": "^2.2.0",
