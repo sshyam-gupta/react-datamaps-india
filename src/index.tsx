@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import * as topojson from 'topojson-client'
 
 import INDIA_JSON from './data/india.json'
@@ -6,8 +6,12 @@ import MapElements from './components/MapElements/index'
 import HoverInfo from './components/HoverInfo'
 import TitleStyle from './components/TitleStyle'
 
-// @ts-ignore
-const TOPO_INDIA_DATA = topojson.feature(INDIA_JSON, INDIA_JSON.objects['india']).features
+const TOPO_INDIA_DATA = topojson.feature(
+  // @ts-ignore
+  INDIA_JSON,
+  INDIA_JSON.objects['india']
+  // @ts-ignore
+).features
 
 export interface MapLayout {
   title: string
@@ -46,25 +50,25 @@ const DEFAULT_MAP_LAYOUT = {
   hoverTitle: 'Count',
   noDataColor: '#f5f5f5',
   borderColor: '#8D8D8D',
-  hoverColor: 'green'
+  hoverColor: 'green',
 }
 
 class DatamapBox extends React.Component<IDatamapBox> {
   static defaultProps = {
-    regionData: {}
+    regionData: {},
   }
   state = {
     infoWindowPosition: {
       x: 0,
-      y: 0
+      y: 0,
     },
     isInfoWindowActive: false,
     activeState: {
       name: '',
-      value: 0
+      value: 0,
     },
     regionData: this.props.regionData,
-    mapLayout: { ...DEFAULT_MAP_LAYOUT, ...this.props.mapLayout }
+    mapLayout: { ...DEFAULT_MAP_LAYOUT, ...this.props.mapLayout },
   }
 
   constructor(props: IDatamapBox) {
@@ -81,7 +85,7 @@ class DatamapBox extends React.Component<IDatamapBox> {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.mouseLeaveDatamap);
+    window.removeEventListener('scroll', this.mouseLeaveDatamap)
   }
 
   static getDerivedStateFromProps(props: IDatamapBox, state: any) {
@@ -91,37 +95,39 @@ class DatamapBox extends React.Component<IDatamapBox> {
       }
     } else if (props.mapLayout !== state.mapLayout) {
       return {
-        mapLayout: { ...DEFAULT_MAP_LAYOUT, ...props.mapLayout }
+        mapLayout: { ...DEFAULT_MAP_LAYOUT, ...props.mapLayout },
       }
     }
     return null
   }
 
   calculateExtremeValues(regions: RegionData) {
-    const regionValues: any[] = Object.values(regions).map(region => region.value ?? region)
+    const regionValues: any[] = Object.values(regions).map(
+      (region) => region.value ?? region
+    )
 
     return {
       min: Math.min(...regionValues),
-      max: Math.max(...regionValues)
+      max: Math.max(...regionValues),
     }
   }
 
   mouseMoveOnDatamap(e: any) {
     this.setState({
       infoWindowPosition: { x: e.clientX, y: e.clientY },
-      isInfoWindowActive: true
+      isInfoWindowActive: true,
     })
   }
 
   mouseEnterOnDatamap() {
     this.setState({
-      isInfoWindowActive: true
+      isInfoWindowActive: true,
     })
   }
 
   mouseLeaveDatamap() {
     this.setState({
-      isInfoWindowActive: false
+      isInfoWindowActive: false,
     })
   }
 
@@ -129,9 +135,9 @@ class DatamapBox extends React.Component<IDatamapBox> {
     this.setState({
       activeState: {
         name,
-        value
+        value,
       },
-      isInfoWindowActive: true
+      isInfoWindowActive: true,
     })
   }
 

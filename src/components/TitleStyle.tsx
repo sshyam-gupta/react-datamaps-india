@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from 'react'
 
 function TitleStyle() {
   return (
@@ -16,7 +16,7 @@ function TitleStyle() {
         }
       `}</style>
     </div>
-  );
+  )
 }
 
-export default TitleStyle;
+export default TitleStyle

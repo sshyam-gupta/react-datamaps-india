@@ -1,12 +1,12 @@
-import * as React from "react";
+import React from 'react'
 
 interface TitleProps {
-  text: string;
-  className: string;
+  text: string
+  className: string
   coords: {
-    x: number;
-    y: number;
-  };
+    x: number
+    y: number
+  }
 }
 
 const Title = (props: TitleProps) => (
@@ -15,6 +15,6 @@ const Title = (props: TitleProps) => (
       {props.text}
     </text>
   </g>
-);
+)
 
-export default Title;
+export default Title

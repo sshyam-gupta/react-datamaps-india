@@ -1,13 +1,13 @@
-import * as React from "react";
-import * as d3Scale from "d3-scale";
-import * as d3Interpolate from "d3-interpolate";
-import { MapLayout } from "../../index";
+import React from 'react'
+import * as d3Scale from 'd3-scale'
+import * as d3Interpolate from 'd3-interpolate'
+import { MapLayout } from '../..'
 
-const TEXT_STYLE = { textAnchor: "middle", fontSize: 7, fill: "#333" };
+const TEXT_STYLE = { textAnchor: 'middle', fontSize: 7, fill: '#333' }
 
 function linearColorScale(value: number, mapLayout: MapLayout) {
-  const startColor = mapLayout.startColor;
-  const endColor = mapLayout.endColor;
+  const startColor = mapLayout.startColor
+  const endColor = mapLayout.endColor
 
   return (
     d3Scale
@@ -15,15 +15,16 @@ function linearColorScale(value: number, mapLayout: MapLayout) {
       .domain([0, 130])
       // @ts-ignore
       .range([startColor, endColor])
+      // @ts-ignore
       .interpolate(d3Interpolate.interpolateLab)(value)
-  );
+  )
 }
 
 function renderGradient({
   svgHeight,
   svgWidth,
-  mapLayout
-}: Omit<MapLegendProps, "extremeValues">) {
+  mapLayout,
+}: Omit<MapLegendProps, 'extremeValues'>) {
   return Array(40)
     .fill(undefined)
     .map((_, i) => (
@@ -33,27 +34,27 @@ function renderGradient({
         y={svgHeight - 50}
         width={5}
         height="5"
-        fill={linearColorScale(i * 4, mapLayout)}
+        fill={`${linearColorScale(i * 4, mapLayout)}`}
         stroke="none"
       />
-    ));
+    ))
 }
 
 interface MapLegendProps {
-  svgWidth: number;
-  svgHeight: number;
+  svgWidth: number
+  svgHeight: number
   extremeValues: {
-    min: number;
-    max: number;
-  };
-  mapLayout: MapLayout;
+    min: number
+    max: number
+  }
+  mapLayout: MapLayout
 }
 
 const MapLegend = ({
   extremeValues: { min, max },
   mapLayout,
   svgWidth,
-  svgHeight
+  svgHeight,
 }: MapLegendProps) => {
   return (
     <g>
@@ -69,7 +70,7 @@ const MapLegend = ({
       </text>
       {renderGradient({ svgWidth, svgHeight, mapLayout })}
     </g>
-  );
-};
+  )
+}
 
-export default MapLegend;
+export default MapLegend

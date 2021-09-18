@@ -17,9 +17,9 @@ yarn add react-datamaps-india
 ## Usage
 
 ```tsx
-import * as React from "react";
+import React from 'react'
 
-import DatamapsIndia from "react-datamaps-india";
+import DatamapsIndia from 'react-datamaps-india'
 
 const Example = () => {
   return (
@@ -35,22 +35,22 @@ const Example = () => {
             <p>{value.name}</p>
             <p>{value.value}</p>
           </>
-        );
+        )
       }}
       mapLayout={{
-        title: "Title",
-        legendTitle: "Legend Title",
-        startColor: "#FFDAB9",
-        endColor: "#FF6347",
-        hoverTitle: "Count",
-        noDataColor: "#f5f5f5",
-        borderColor: "#8D8D8D",
-        hoverBorderColor: "#8D8D8D",
-        hoverColor: "green",
+        title: 'Title',
+        legendTitle: 'Legend Title',
+        startColor: '#FFDAB9',
+        endColor: '#FF6347',
+        hoverTitle: 'Count',
+        noDataColor: '#f5f5f5',
+        borderColor: '#8D8D8D',
+        hoverBorderColor: '#8D8D8D',
+        hoverColor: 'green',
       }}
     />
-  );
-};
+  )
+}
 ```
 
 ### Available Props
