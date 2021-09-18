@@ -7,29 +7,29 @@ const STATES = {
     value: 20,
   },
   "Andhra Pradesh": {
-    value: 0
+    value: 0,
   },
   "Arunanchal Pradesh": {
-    value: 0
+    value: 0,
   },
   Assam: {
-    value: 0
+    value: 0,
   },
   Maharashtra: {
-    value: 50
+    value: 50,
   },
 };
 
 export default class App extends Component {
   state = STATES;
 
-  onCountChange = e => {
+  onCountChange = (e) => {
     const target = e.target;
     if (!isFinite(target.value) || isNaN(target.value)) return;
     this.setState({
       [target.name]: {
-        value: isFinite(parseInt(target.value)) ? parseInt(target.value) : 0
-      }
+        value: isFinite(parseInt(target.value)) ? parseInt(target.value) : 0,
+      },
     });
   };
 
@@ -45,7 +45,7 @@ export default class App extends Component {
             width: "100%",
             paddingBottom: "100%",
             verticalAlign: "top",
-            overflow: "hidden"
+            overflow: "hidden",
           }}
         >
           <ReactDatamaps
@@ -60,7 +60,7 @@ export default class App extends Component {
               noDataColor: "#f5f5f5",
               borderColor: "#8D8D8D",
               hoverBorderColor: "pink",
-              hoverColor: "green"
+              hoverColor: "green",
             }}
             hoverComponent={({ value }) => {
               return (

@@ -4,8 +4,8 @@
 
 [![NPM](https://img.shields.io/npm/v/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india) [![NPM downloads](https://img.shields.io/npm/dw/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
+## Demo
 
-## Demo 
 [Demo](https://react-datamaps.netlify.app/)
 
 ## Install
@@ -17,43 +17,50 @@ yarn add react-datamaps-india
 ## Usage
 
 ```tsx
-import * as React from 'react'
+import * as React from "react";
 
-import DatamapsIndia from 'react-datamaps-india'
+import DatamapsIndia from "react-datamaps-india";
 
 const Example = () => {
   return (
     <DatamapsIndia
       regionData={{
         Maharashtra: {
-          value: 10
-        }
+          value: 10,
+        },
       }}
       hoverComponent={({ value }) => {
-        return <span>{value}</span>
+        return (
+          <>
+            <p>{value.name}</p>
+            <p>{value.value}</p>
+          </>
+        );
       }}
       mapLayout={{
-        title: 'Title',
-        legendTitle: 'Legend Title',
-        startColor: '#FFDAB9',
-        endColor: '#FF6347'
-        hoverTitle: 'Count',
-        noDataColor: '#f5f5f5',
-        borderColor: '#8D8D8D',
-        hoverBorderColor: '#8D8D8D',
-        hoverColor: 'green'
+        title: "Title",
+        legendTitle: "Legend Title",
+        startColor: "#FFDAB9",
+        endColor: "#FF6347",
+        hoverTitle: "Count",
+        noDataColor: "#f5f5f5",
+        borderColor: "#8D8D8D",
+        hoverBorderColor: "#8D8D8D",
+        hoverColor: "green",
       }}
     />
-  )
-}
+  );
+};
 ```
 
 ### Available Props
 
 ### regionData (optional)
+
 #### Object of valid states with count. Find valid states below
 
 ### mapLayout (optional)
+
 #### Object of map layout props
 
 ```
