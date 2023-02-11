@@ -3,3 +3,9 @@
 *.test.js
 *.test.ts
 dist
+/dist
+*.scss
+*.css
+/node_modules
+/build
+vite.config.ts

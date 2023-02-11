@@ -1,24 +1,32 @@
-# react-datamaps-india
+# react-datamaps-india 🇮🇳
 
 > Datamaps for india region
 
-[![NPM](https://img.shields.io/npm/v/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india) [![NPM downloads](https://img.shields.io/npm/dw/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![npm version](https://img.shields.io/npm/v/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india)
 
-## Demo
+[![npm downloads](https://img.shields.io/npm/dw/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india)
 
-[Demo](https://react-datamaps.netlify.app/)
+[![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-datamaps-india)](https://www.npmjs.com/package/react-datamaps-india)
 
-## Install
+## ✨ [Demo](https://react-datamaps.netlify.app/)
+
+## 🏠 [Homepage](https://github.com/sshyam-gupta/react-datamaps-india#readme)
+
+## Installation
 
 ```bash
-yarn add react-datamaps-india
+pnpm add react-datamaps-india
+```
+
+or with other package manager like npm
+
+```bash
+npm install react-datamaps-india
 ```
 
 ## Usage
 
-```tsx
-import React from 'react'
-
+```jsx
 import DatamapsIndia from 'react-datamaps-india'
 
 const Example = () => {
@@ -80,7 +88,7 @@ hoverBorderColor: 'green'
 ```
 Andaman & Nicobar Island
 Andhra Pradesh
-Arunanchal Pradesh
+Arunachal Pradesh
 Assam
 Bihar
 Chandigarh
@@ -116,6 +124,23 @@ Uttarakhand
 West Bengal
 ```
 
-## License
+## Contributing
 
-MIT © [sshyam-gupta](https://github.com/sshyam-gupta)
+Contributions, issues and feature requests are always welcome!
+Feel free to check [issues page](https://github.com/sshyam-gupta/react-datamaps-india/issues).
+
+## Support
+
+Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2023 [Shyam Gupta (shyamm@outlook.com)](https://github.com/sshyam-gupta)
+This project is [MIT](https://github.com/sshyam-gupta/react-datamaps-india/blob/main/LICENSE) licensed.
+
+## About me
+
+- Website: [sshyam-gupta.space](https://sshyam-gupta.space/)
+- Twitter: [@shyamm06](https://twitter.com/shyamm06)
+- GitHub: [@sshyam-gupta](https://github.com/sshyam-gupta)
+- LinkedIn: [@shyam-gupta-66463a62](https://linkedin.com/in/https://www.linkedin.com/in/shyam-gupta-66463a62/)

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-
-import ReactDatamaps from 'react-datamaps-india'
+import ReactDOM from "react-dom/client"
+import ReactDatamaps from './'
+import "./styles.css"
 
 const STATES = {
   'Andaman & Nicobar Island': {
@@ -12,7 +13,7 @@ const STATES = {
   Assam: {
     value: 3,
   },
-  'Arunanchal Pradesh': {
+  'Arunachal Pradesh': {
     value: 4,
   },
   Bihar: {
@@ -116,7 +117,7 @@ const STATES = {
 export default class App extends Component {
   state = STATES
 
-  onCountChange = (e) => {
+  onCountChange = (e: any) => {
     const target = e.target
     if (!isFinite(target.value) || isNaN(target.value)) return
     this.setState({
@@ -127,7 +128,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { startColor, endColor, ...regionData } = this.state
+    const { startColor, endColor, ...regionData }: any = this.state
     return (
       <div className="container">
         <div
@@ -145,7 +146,6 @@ export default class App extends Component {
             regionData={regionData}
             mapLayout={{
               title: 'Title',
-              width: '',
               legendTitle: 'Legend',
               startColor: '#FFDAB9',
               endColor: '#FF6347',
@@ -155,7 +155,7 @@ export default class App extends Component {
               hoverBorderColor: 'pink',
               hoverColor: 'green',
             }}
-            hoverComponent={({ value }) => {
+            hoverComponent={({ value }: any) => {
               return (
                 <>
                   <p>{value.name}</p>
@@ -218,3 +218,10 @@ export default class App extends Component {
     )
   }
 }
+
+
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+)
