@@ -1,6 +1,6 @@
 {
   "name": "react-datamaps-india",
-  "version": "0.5.2",
+  "version": "0.5.2-beta",
   "description": "Datamaps for india region",
   "type": "module",
   "main": "./dist/react-datamaps-india.umd.cjs",
