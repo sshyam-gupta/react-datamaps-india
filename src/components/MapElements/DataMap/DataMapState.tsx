@@ -1,15 +1,16 @@
 import React from 'react'
+// import { transition } from 'd3-transition'
 
 interface DatamapStateProps {
   path(): string
-  mouseEnterOnState(name: string, value: number, index: number): void
+  // mouseEnterOnState(name: string, value: number, index: number): void
   name: string
   value: any
   fillColor: string | number
-  hoverColor?: string
-  borderColor: string
-  hoverBorderColor?: string
-  index: number
+  // hoverColor?: string
+  // borderColor: string
+  // hoverBorderColor?: string
+  // index: number
 }
 
 class DatamapState extends React.Component<DatamapStateProps> {
@@ -31,13 +32,15 @@ class DatamapState extends React.Component<DatamapStateProps> {
     window.removeEventListener('scroll', this.handleMouseLeave)
   }
 
-  handleMouseEnter() {
+  handleMouseEnter(e, d) {
+    // console.log({ e, d })
     const { name, value, index } = this.props
 
     this.setState({
       isActive: true,
     })
-    this.props.mouseEnterOnState(name, value, index)
+    console.log({ name, value })
+    // this.props.mouseEnterOnState(name, value, index)
   }
 
   handleMouseLeave() {
@@ -50,20 +53,35 @@ class DatamapState extends React.Component<DatamapStateProps> {
     const stateStyle = {
       fill: this.state.isActive
         ? this.props.hoverColor || '#FFCCBC'
-        : this.props.fillColor,
+        : this.props.fillColor || '#d0cfcf80',
       stroke: this.state.isActive
         ? this.props.hoverBorderColor || '#FF5722'
-        : this.props.borderColor,
-      strokeWidth: 0.5,
+        : this.props.borderColor || '#d0cfcf',
+      strokeWidth: 0.2,
     }
+
     return (
       <path
         className="datamap-state"
-        // @ts-ignore
         style={stateStyle}
         d={this.props.path()}
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
+        // onMouseEnter={this.handleMouseEnter}
+        // onMouseLeave={this.handleMouseLeave}
+        // .style('cursor', 'pointer')
+        //     .on('mouseenter', (event, d) => {
+        //       if (onceTouchedRegion.current) return
+        //       setRegionHighlighted({
+        //         stateCode: STATE_CODES[d.properties.st_nm],
+        //       })
+        //     })
+        //     .on('pointerdown', (event, d) => {
+        //       if (onceTouchedRegion.current === d)
+        //         onceTouchedRegion.current = null
+        //       else onceTouchedRegion.current = d
+        //       setRegionHighlighted({
+        //         stateCode: STATE_CODES[d.properties.st_nm],
+        //       })
+        //     })
       />
     )
   }

@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
-import ReactDOM from "react-dom/client"
+import React, { useState } from 'react'
+import ReactDOM from 'react-dom/client'
 import ReactDatamaps from './'
-import "./styles.css"
+import './styles.css'
 
 const STATES = {
   'Andaman & Nicobar Island': {
@@ -11,7 +11,7 @@ const STATES = {
     value: 2,
   },
   Assam: {
-    value: 3,
+    value: 60,
   },
   'Arunachal Pradesh': {
     value: 4,
@@ -25,8 +25,8 @@ const STATES = {
   Chhattisgarh: {
     value: 7,
   },
-  'Dadara & Nagar Haveli': {
-    value: 8,
+  'Dadra and Nagar Haveli and Daman and Diu': {
+    value: 55,
   },
   'Daman & Diu': {
     value: 9,
@@ -112,86 +112,97 @@ const STATES = {
   'West Bengal': {
     value: 36,
   },
+  Ladakh: {
+    value: 37,
+  },
 }
 
-export default class App extends Component {
-  state = STATES
+function App() {
+  const [states, setStates] = useState<{
+    [x: string]: {
+      value: number
+    }
+  }>(STATES)
 
-  onCountChange = (e: any) => {
-    const target = e.target
-    if (!isFinite(target.value) || isNaN(target.value)) return
-    this.setState({
+  const onCountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { target } = e
+
+    const val = parseInt(target.value, 10)
+
+    if (!Number.isFinite(val) || Number.isNaN(val)) return
+
+    setStates({
+      ...states,
       [target.name]: {
-        value: isFinite(parseInt(target.value)) ? parseInt(target.value) : 0,
+        value: Number.isFinite(val) ? val : 0,
       },
     })
   }
 
-  render() {
-    const { startColor, endColor, ...regionData }: any = this.state
-    return (
-      <div className="container">
-        <div
-          style={{
-            flex: 1,
-            display: 'inline-block',
-            position: 'relative',
-            width: '100%',
-            paddingBottom: '100%',
-            verticalAlign: 'top',
-            overflow: 'hidden',
+  return (
+    <div className="container">
+      <div
+        style={{
+          flex: 1,
+          display: 'inline-block',
+          position: 'relative',
+          width: '100%',
+          paddingBottom: '100%',
+          verticalAlign: 'top',
+          overflow: 'hidden',
+        }}
+      >
+        <ReactDatamaps
+          regionData={states}
+          mapLayout={{
+            title: 'Title',
+            legendTitle: 'Legend',
+            startColor: '#FFDAB9',
+            endColor: '#FF6347',
+            hoverTitle: 'Count',
+            noDataColor: '#f5f5f5',
+            borderColor: '#8D8D8D',
+            hoverBorderColor: 'pink',
+            hoverColor: 'green',
           }}
-        >
-          <ReactDatamaps
-            regionData={regionData}
-            mapLayout={{
-              title: 'Title',
-              legendTitle: 'Legend',
-              startColor: '#FFDAB9',
-              endColor: '#FF6347',
-              hoverTitle: 'Count',
-              noDataColor: '#f5f5f5',
-              borderColor: '#8D8D8D',
-              hoverBorderColor: 'pink',
-              hoverColor: 'green',
-            }}
-            hoverComponent={({ value }: any) => {
-              return (
-                <>
-                  <p>{value.name}</p>
-                  <p>{value.value}</p>
-                </>
-              )
-            }}
-          />
-        </div>
-        <div className="editor">
-          <h2>Edit Here</h2>
-          <table>
+          hoverComponent={({ value }: any) => {
+            return (
+              <>
+                <p>{value.name}</p>
+                <p>{value.value}</p>
+              </>
+            )
+          }}
+        />
+      </div>
+      <div className="editor">
+        <h2>Edit Here</h2>
+        <table>
+          <thead>
             <tr>
               <th>State</th>
               <th>Count</th>
             </tr>
-            {Object.entries(this.state).map(([key, value]) => (
+          </thead>
+          <tbody>
+            {Object.entries(states).map(([key, value]) => (
               <tr key={key}>
                 <td>{key}</td>
                 <td>
                   <input
                     name={key}
                     value={value.value}
-                    onChange={this.onCountChange}
+                    onChange={onCountChange}
                   />
                 </td>
               </tr>
             ))}
-          </table>
-        </div>
-        <style>{`
+          </tbody>
+        </table>
+      </div>
+      <style>{`
           .container {
             display: flex;
-          }
-          th {
-            text-align: left;
           }
           table,
           th,
@@ -199,9 +210,8 @@ export default class App extends Component {
             border: 1px solid black;
             border-collapse: collapse;
           }
-          th,
-          td {
-            padding: 10px 20px;
+          tbody tr:nth-child(even) {
+            background-color: initial;
           }
           @media (max-width: 1000px) {
             .container {
@@ -214,14 +224,12 @@ export default class App extends Component {
             overflow: scroll;
           }
         `}</style>
-      </div>
-    )
-  }
+    </div>
+  )
 }
 
-
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <App />
-  </React.StrictMode>,
+  </React.StrictMode>
 )
