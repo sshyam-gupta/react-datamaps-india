@@ -77,5 +77,5 @@ export interface StateToolTip {
   mouseEvent: MouseEvent,
   name: string,
   value: StateValue,
-  valueTitle: string
+  valueTitle?: string
 }

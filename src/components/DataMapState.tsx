@@ -11,8 +11,7 @@ import MapTooltip from './MapTooltip'
 
 function DataMapState(props: DataMapStateProps) {
   const [isActive, setActive] = useState(false)
-  const [mouseEvent, setMouseEvent] =
-    useState<MouseEventHandler<SVGPathElement>>()
+  const [mouseEvent, setMouseEvent] = useState<MouseEvent>()
   const pathRef = createRef<SVGPathElement>()
 
   function resetActive() {
@@ -27,7 +26,7 @@ function DataMapState(props: DataMapStateProps) {
     }
   }, [])
 
-  const onMouseMove = (evt: MouseEventHandler<SVGPathElement>) => {
+  const onMouseMove = (evt: MouseEvent) => {
     setActive(true)
     setMouseEvent(evt)
     return
