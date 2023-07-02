@@ -16,7 +16,11 @@ const svgStyle: SvgStyle = {
   left: 0,
 }
 
-function DataMapsIndia({ regionData, mapLayout }: DataMapsIndiaProps) {
+function DataMapsIndia({
+  regionData,
+  mapLayout,
+  hoverComponent,
+}: DataMapsIndiaProps) {
   const colorRange = [
     mapLayout.startColor || DEFAULT_COLOR_RANGE[0],
     mapLayout.endColor || DEFAULT_COLOR_RANGE[1],
@@ -72,7 +76,9 @@ function DataMapsIndia({ regionData, mapLayout }: DataMapsIndiaProps) {
               noDataColor: mapLayout.noDataColor,
               borderColor: mapLayout.borderColor,
               hoverColor: mapLayout.hoverColor,
+              hoverValuePrefix: mapLayout.hoverValuePrefix,
             }}
+            hoverComponent={hoverComponent}
           />
 
           {mapLayout.title && <MapTitle text={mapLayout.title} />}

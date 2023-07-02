@@ -23,7 +23,9 @@ function DataMap(props: DataMapProps) {
           path={() => path()(feature)}
           hoverColor={layout.hoverColor}
           borderColor={layout.borderColor}
+          hoverValuePrefix={layout.hoverValuePrefix}
           value={stateValue?.value}
+          hoverComponent={props.hoverComponent}
         />
       )
     })

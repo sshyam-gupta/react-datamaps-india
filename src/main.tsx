@@ -157,22 +157,22 @@ function App() {
           mapLayout={{
             title: 'Datamaps',
             legendTitle: 'Legend',
-            // startColor: '#1F8A70',
-            // endColor: '#FC7300',
-            // noDataColor: 'blue',
-            // borderColor: '#121',
-            // hoverColor: 'green',
-
-            hoverTitle: 'Count',
+            startColor: '#1F8A70',
+            endColor: '#000',
+            noDataColor: 'blue',
+            borderColor: 'yellow',
+            hoverColor: 'green',
+            hoverValuePrefix: 'Counts',
           }}
-          // hoverComponent={({ value }: any) => {
-          //   return (
-          //     <>
-          //       <p>{value.name}</p>
-          //       <p>{value.value}</p>
-          //     </>
-          //   )
-          // }}
+          hoverComponent={({ value }: any) => {
+            console.log(value)
+            return (
+              <>
+                <p>{value.name}</p>
+                <p>{value.value}</p>
+              </>
+            )
+          }}
         />
       </div>
       <div className="editor">

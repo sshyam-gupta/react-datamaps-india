@@ -5,7 +5,7 @@ function MapTitle(props: TitleProps) {
 
   return (
     <g>
-      <text x={15} y={25}>
+      <text x={15} y={15}>
         {text}
       </text>
     </g>

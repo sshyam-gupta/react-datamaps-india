@@ -2,6 +2,8 @@ import { createPortal } from 'react-dom'
 import { StateToolTip } from '../types'
 
 function MapTooltip(props: StateToolTip) {
+  const HoverComponent = props.hoverComponent
+
   return createPortal(
     <>
       <div
@@ -12,15 +14,19 @@ function MapTooltip(props: StateToolTip) {
         }}
         className="state-tooltip"
       >
-        <>
-          <p>{props.name}</p>
-          {isFinite(props.value) && (
-            <p>
-              {props.valueTitle ? `${props.valueTitle}: ` : ''}
-              {props.value}
-            </p>
-          )}
-        </>
+        {HoverComponent ? (
+          <HoverComponent value={{ value: props.value, name: props.name }} />
+        ) : (
+          <>
+            <p>{props.name}</p>
+            {isFinite(props.value) && (
+              <p>
+                {props.hoverValuePrefix ? `${props.hoverValuePrefix}: ` : ''}
+                {props.value}
+              </p>
+            )}
+          </>
+        )}
       </div>
       <style>{`
           .state-tooltip {

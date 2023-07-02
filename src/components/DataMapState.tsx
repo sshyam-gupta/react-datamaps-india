@@ -29,7 +29,6 @@ function DataMapState(props: DataMapStateProps) {
   const onMouseMove = (evt: MouseEvent) => {
     setActive(true)
     setMouseEvent(evt)
-    return
   }
 
   const { hoverColor, fillColor, borderColor, path } = props
@@ -57,6 +56,8 @@ function DataMapState(props: DataMapStateProps) {
           name={props.name}
           value={props.value}
           mouseEvent={mouseEvent}
+          hoverValuePrefix={props.hoverValuePrefix}
+          hoverComponent={props.hoverComponent}
         />
       )}
     </>

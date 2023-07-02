@@ -23,6 +23,7 @@ type StateValue = number
 export interface DataMapsIndiaProps {
   regionData: RegionData
   mapLayout: MapLayout
+  hoverComponent: React.ReactElement | JSX.Element
 }
 
 export interface RegionData {
@@ -58,6 +59,7 @@ export interface DataMapStateProps {
   fillColor: ColorProperty
   hoverColor?: ColorProperty
   borderColor?: ColorProperty
+  hoverComponent: React.ReactElement | JSX.Element
 }
 
 export interface MapLegendProps {
@@ -74,8 +76,9 @@ export interface TitleProps {
 }
 
 export interface StateToolTip {
-  mouseEvent: MouseEvent,
-  name: string,
-  value: StateValue,
-  valueTitle?: string
+  mouseEvent: MouseEvent
+  name: string
+  value: StateValue
+  hoverValuePrefix?: string
+  hoverComponent: React.ReactElement | JSX.Element
 }
