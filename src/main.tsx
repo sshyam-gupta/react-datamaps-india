@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
-import ReactDatamaps from './'
+import ReactDataMaps from '.'
 import './styles.css'
 
 const STATES = {
@@ -11,7 +11,7 @@ const STATES = {
     value: 2,
   },
   Assam: {
-    value: 60,
+    value: 6,
   },
   'Arunachal Pradesh': {
     value: 4,
@@ -152,27 +152,27 @@ function App() {
           overflow: 'hidden',
         }}
       >
-        <ReactDatamaps
+        <ReactDataMaps
           regionData={states}
           mapLayout={{
-            title: 'Title',
+            title: 'Datamaps',
             legendTitle: 'Legend',
-            startColor: '#FFDAB9',
-            endColor: '#FF6347',
+            // startColor: '#1F8A70',
+            // endColor: '#FC7300',
+            // noDataColor: 'blue',
+            // borderColor: '#121',
+            // hoverColor: 'green',
+
             hoverTitle: 'Count',
-            noDataColor: '#f5f5f5',
-            borderColor: '#8D8D8D',
-            hoverBorderColor: 'pink',
-            hoverColor: 'green',
           }}
-          hoverComponent={({ value }: any) => {
-            return (
-              <>
-                <p>{value.name}</p>
-                <p>{value.value}</p>
-              </>
-            )
-          }}
+          // hoverComponent={({ value }: any) => {
+          //   return (
+          //     <>
+          //       <p>{value.name}</p>
+          //       <p>{value.value}</p>
+          //     </>
+          //   )
+          // }}
         />
       </div>
       <div className="editor">
@@ -207,7 +207,7 @@ function App() {
           table,
           th,
           td {
-            border: 1px solid black;
+            border: 1px solid #ccc;
             border-collapse: collapse;
           }
           tbody tr:nth-child(even) {

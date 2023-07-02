@@ -53,7 +53,6 @@ const Example = () => {
         hoverTitle: 'Count',
         noDataColor: '#f5f5f5',
         borderColor: '#8D8D8D',
-        hoverBorderColor: '#8D8D8D',
         hoverColor: 'green',
       }}
     />
@@ -80,7 +79,6 @@ hoverTitle: 'Count',
 noDataColor: '#f5f5f5',
 borderColor: '#8D8D8D',
 hoverColor: 'green'
-hoverBorderColor: 'green'
 ```
 
 ### Valid States

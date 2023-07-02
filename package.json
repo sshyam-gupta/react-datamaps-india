@@ -38,27 +38,21 @@
     "format": "prettier \"src/**/*.{js,jsx,ts,tsx,css,scss}\" --write",
     "compile": "tsc",
     "preview": "vite preview",
-    "test": "vitest",
-    "size": "size-limit",
     "prepublishOnly": "yarn build",
-    "prepare": "husky install",
-    "coverage": "vitest run --coverage"
+    "prepare": "husky install"
   },
   "dependencies": {
-    "d3-fetch": "^3.0.1",
     "d3-geo": "^3.1.0",
     "d3-interpolate": "^3.0.1",
     "d3-scale": "^4.0.2",
-    "d3-selection": "^3.0.0",
-    "d3-transition": "^3.0.1",
-    "topojson-client": "^3.1.0"
+    "topojson-client": "^3.1.0",
+    "react-dom": "^18.2.0"
   },
   "peerDependencies": {
     "react": ">=16.8",
     "react-dom": ">=16.8"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^8.1.2",
     "@types/d3-geo": "^3.0.3",
     "@types/d3-interpolate": "^3.0.1",
     "@types/d3-scale": "^4.0.3",
@@ -69,9 +63,7 @@
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "@vitejs/plugin-react-swc": "^3.1.0",
-    "@vitest/coverage-c8": "^0.28.4",
     "eslint": "^8.34.0",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
@@ -81,30 +73,16 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "happy-dom": "^8.2.6",
     "husky": "^8.0.3",
-    "json-loader": "^0.5.7",
     "path": "^0.12.7",
     "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "size-limit": "^8.1.2",
-    "tslib": "^2.5.0",
     "typescript": "^4.9.5",
     "vite": "^4.1.1",
     "vite-plugin-dts": "^1.7.2",
-    "vite-tsconfig-paths": "^4.0.5",
-    "vitest": "^0.28.4"
+    "vite-tsconfig-paths": "^4.0.5"
   },
   "files": [
     "dist"
-  ],
-  "size-limit": [
-    {
-      "path": "dist/react-router-prompt.js",
-      "limit": "5 KB"
-    },
-    {
-      "path": "dist/react-router-prompt.umd.cjs",
-      "limit": "8 KB"
-    }
   ]
 }
