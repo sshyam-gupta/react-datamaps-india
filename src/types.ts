@@ -16,6 +16,7 @@ export interface MapLayout {
   noDataColor?: ColorProperty //'#f5f5f5'
   borderColor?: ColorProperty //'#8D8D8D'
   hoverColor?: ColorProperty //'green'
+  hoverValuePrefix?: string
 }
 
 type StateValue = number
@@ -23,7 +24,7 @@ type StateValue = number
 export interface DataMapsIndiaProps {
   regionData: RegionData
   mapLayout: MapLayout
-  hoverComponent: React.ReactElement | JSX.Element
+  hoverComponent: any
 }
 
 export interface RegionData {
@@ -50,6 +51,7 @@ export interface DataMapProps {
     Partial<MapLayout>,
     'title' | 'legendTitle' | 'startColor' | 'endColor'
   >
+  hoverComponent: any
 }
 
 export interface DataMapStateProps {
@@ -59,7 +61,8 @@ export interface DataMapStateProps {
   fillColor: ColorProperty
   hoverColor?: ColorProperty
   borderColor?: ColorProperty
-  hoverComponent: React.ReactElement | JSX.Element
+  hoverValuePrefix?: string
+  hoverComponent: any
 }
 
 export interface MapLegendProps {
@@ -80,5 +83,5 @@ export interface StateToolTip {
   name: string
   value: StateValue
   hoverValuePrefix?: string
-  hoverComponent: React.ReactElement | JSX.Element
+  hoverComponent: any
 }
