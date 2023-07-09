@@ -12,10 +12,10 @@ export interface MapLayout {
   legendTitle?: string
   startColor?: ColorProperty
   endColor?: ColorProperty
-  hoverTitle?: string // 'Count'
-  noDataColor?: ColorProperty //'#f5f5f5'
-  borderColor?: ColorProperty //'#8D8D8D'
-  hoverColor?: ColorProperty //'green'
+  hoverTitle?: string
+  noDataColor?: ColorProperty
+  borderColor?: ColorProperty
+  hoverColor?: ColorProperty
   hoverValuePrefix?: string
 }
 
