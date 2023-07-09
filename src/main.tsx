@@ -156,16 +156,15 @@ function App() {
           regionData={states}
           mapLayout={{
             title: 'Datamaps',
-            legendTitle: 'Legend',
-            startColor: '#1F8A70',
-            endColor: '#000',
-            noDataColor: 'blue',
-            borderColor: 'yellow',
-            hoverColor: 'green',
-            hoverValuePrefix: 'Counts',
+            // legendTitle: 'Legend',
+            // startColor: '#1F8A70',
+            // endColor: '#000',
+            // noDataColor: 'blue',
+            // borderColor: 'yellow',
+            // hoverColor: 'green',
+            // hoverValuePrefix: 'Counts',
           }}
           hoverComponent={({ value }: any) => {
-            console.log(value)
             return (
               <>
                 <p>{value.name}</p>
