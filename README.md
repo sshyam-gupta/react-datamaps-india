@@ -50,7 +50,7 @@ const Example = () => {
         legendTitle: 'Legend Title',
         startColor: '#FFDAB9',
         endColor: '#FF6347',
-        hoverTitle: 'Count',
+        hoverValuePrefix: 'Count',
         noDataColor: '#f5f5f5',
         borderColor: '#8D8D8D',
         hoverColor: 'green',
@@ -91,8 +91,7 @@ Assam
 Bihar
 Chandigarh
 Chhattisgarh
-Dadara & Nagar Haveli
-Daman & Diu
+Dadra and Nagar Haveli and Daman and Diu
 Delhi
 Goa
 Gujarat
@@ -102,6 +101,7 @@ Jammu & Kashmir
 Jharkhand
 Karnataka
 Kerala
+Ladakh
 Lakshadweep
 Madhya Pradesh
 Maharashtra
