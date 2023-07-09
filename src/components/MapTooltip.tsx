@@ -30,7 +30,7 @@ function MapTooltip(props: StateToolTip) {
       </div>
       <style>{`
           .state-tooltip {
-            position: absolute,
+            position: absolute;
             min-width: 8ch;
             background-color: white;
             box-shadow: 0px 0px 14px rgba(0, 0, 0, 0.3);
