@@ -1,6 +1,6 @@
 {
   "name": "react-datamaps-india",
-  "version": "0.6.0",
+  "version": "1.0.0-beta-5",
   "description": "Datamaps for india region",
   "type": "module",
   "main": "./dist/react-datamaps-india.umd.cjs",
@@ -38,11 +38,8 @@
     "format": "prettier \"src/**/*.{js,jsx,ts,tsx,css,scss}\" --write",
     "compile": "tsc",
     "preview": "vite preview",
-    "test": "vitest",
-    "size": "size-limit",
     "prepublishOnly": "yarn build",
-    "prepare": "husky install",
-    "coverage": "vitest run --coverage"
+    "prepare": "husky install"
   },
   "dependencies": {
     "d3-geo": "^3.1.0",
@@ -55,19 +52,18 @@
     "react-dom": ">=16.8"
   },
   "devDependencies": {
-    "@size-limit/preset-small-lib": "^8.1.2",
     "@types/d3-geo": "^3.0.3",
     "@types/d3-interpolate": "^3.0.1",
     "@types/d3-scale": "^4.0.3",
+    "@types/geojson": "^7946.0.10",
+    "@types/node": "^20.3.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.10",
     "@types/topojson-client": "^3.1.1",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
     "@vitejs/plugin-react-swc": "^3.1.0",
-    "@vitest/coverage-c8": "^0.28.4",
     "eslint": "^8.34.0",
-    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
@@ -75,32 +71,17 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "happy-dom": "^8.2.6",
     "husky": "^8.0.3",
-    "json-loader": "^0.5.7",
     "path": "^0.12.7",
     "prettier": "^2.8.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "size-limit": "^8.1.2",
-    "tslib": "^2.5.0",
     "typescript": "^4.9.5",
     "vite": "^4.1.1",
     "vite-plugin-dts": "^1.7.2",
-    "vite-tsconfig-paths": "^4.0.5",
-    "vitest": "^0.28.4"
+    "vite-tsconfig-paths": "^4.0.5"
   },
   "files": [
     "dist"
-  ],
-  "size-limit": [
-    {
-      "path": "dist/react-router-prompt.js",
-      "limit": "5 KB"
-    },
-    {
-      "path": "dist/react-router-prompt.umd.cjs",
-      "limit": "8 KB"
-    }
   ]
 }

@@ -1,6 +1,7 @@
 import { resolve } from "path";
 import dts from "vite-plugin-dts";
 import tsConfigPaths from "vite-tsconfig-paths";
+// @ts-ignore
 import * as packageJson from "./package.json";
 
 import { defineConfig } from "vite";
@@ -22,10 +23,8 @@ export default defineConfig({
       fileName: "react-datamaps-india",
     },
     rollupOptions: {
+      // @ts-ignore
       external: [...Object.keys(packageJson.peerDependencies)],
     },
-  },
-  test: {
-    environment: "happy-dom",
-  },
+  }
 });

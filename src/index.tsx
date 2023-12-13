@@ -1,175 +1,101 @@
-import React from 'react'
-import * as topojson from 'topojson-client'
+import * as d3Scale from 'd3-scale'
+import * as d3Interpolate from 'd3-interpolate'
+import { useMemo } from 'react'
 
-import INDIA_JSON from './data/india.json'
-import MapElements from './components/MapElements/index'
-import HoverInfo from './components/HoverInfo'
-import TitleStyle from './components/TitleStyle'
+import * as geoData from './data/india.json'
+import { DataMapsIndiaProps, SvgStyle } from './types'
+import { DEFAULT_COLOR_RANGE, MAP_HEIGHT, MAP_WIDTH } from './constants'
+import DataMap from './components/DataMap'
+import MapLegend from './components/MapLegend'
+import MapTitle from './components/MapTitle'
 
-const TOPO_INDIA_DATA = topojson.feature(
-  // @ts-ignore
-  INDIA_JSON,
-  INDIA_JSON.objects['india']
-  // @ts-ignore
-).features
-
-export interface MapLayout {
-  title: string
-  legendTitle: string
-  startColor: string
-  endColor: string
-  hoverTitle: string
-  noDataColor: string
-  borderColor: string
-  hoverColor?: string
-  hoverName?: string
-  hoverBorderColor?: string
-  width?: number
-  height?: number
+const svgStyle: SvgStyle = {
+  display: 'inline-block',
+  position: 'relative',
+  top: 0,
+  left: 0,
 }
 
-export interface RegionData {
-  [key: string]: {
-    value: number
-    [key: string]: any
-  }
-}
+function DataMapsIndia({
+  regionData,
+  mapLayout,
+  hoverComponent,
+}: DataMapsIndiaProps) {
+  const colorRange = [
+    mapLayout.startColor || DEFAULT_COLOR_RANGE[0],
+    mapLayout.endColor || DEFAULT_COLOR_RANGE[1],
+  ] as [string, string]
 
-interface IDatamapBox {
-  regionData: RegionData
-  mapLayout: MapLayout
-  hoverComponent?: any
-}
-
-const DEFAULT_MAP_LAYOUT = {
-  title: '',
-  hoverName: '',
-  legendTitle: '',
-  startColor: 'orange',
-  endColor: 'red',
-  hoverTitle: 'Count',
-  noDataColor: '#f5f5f5',
-  borderColor: '#8D8D8D',
-  hoverColor: 'green',
-}
-
-class DatamapBox extends React.Component<IDatamapBox> {
-  static defaultProps = {
-    regionData: {},
-  }
-  state = {
-    infoWindowPosition: {
-      x: 0,
-      y: 0,
-    },
-    isInfoWindowActive: false,
-    activeState: {
-      name: '',
-      value: 0,
-    },
-    regionData: this.props.regionData,
-    mapLayout: { ...DEFAULT_MAP_LAYOUT, ...this.props.mapLayout },
-  }
-
-  constructor(props: IDatamapBox) {
-    super(props)
-    this.mouseMoveOnDatamap = this.mouseMoveOnDatamap.bind(this)
-    this.mouseEnterOnDatamap = this.mouseEnterOnDatamap.bind(this)
-    this.mouseLeaveDatamap = this.mouseLeaveDatamap.bind(this)
-    this.mouseEnterOnState = this.mouseEnterOnState.bind(this)
-    this.calculateExtremeValues = this.calculateExtremeValues.bind(this)
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.mouseLeaveDatamap)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.mouseLeaveDatamap)
-  }
-
-  static getDerivedStateFromProps(props: IDatamapBox, state: any) {
-    if (props.regionData !== state.regionData) {
-      return {
-        regionData: props.regionData,
-      }
-    } else if (props.mapLayout !== state.mapLayout) {
-      return {
-        mapLayout: { ...DEFAULT_MAP_LAYOUT, ...props.mapLayout },
-      }
-    }
-    return null
-  }
-
-  calculateExtremeValues(regions: RegionData) {
-    const regionValues: any[] = Object.values(regions).map(
-      (region) => region.value ?? region
-    )
+  const extremeValues = useMemo(() => {
+    const regionValues = Object.values(regionData).map((region) => region.value)
 
     return {
       min: Math.min(...regionValues),
       max: Math.max(...regionValues),
     }
-  }
+  }, [regionData])
 
-  mouseMoveOnDatamap(e: any) {
-    this.setState({
-      infoWindowPosition: { x: e.clientX, y: e.clientY },
-      isInfoWindowActive: true,
-    })
-  }
+  const { min: minValue, max: maxValue } = extremeValues
 
-  mouseEnterOnDatamap() {
-    this.setState({
-      isInfoWindowActive: true,
-    })
-  }
+  const isNotExtremeValuesEmpty =
+    !Number.isNaN(minValue) &&
+    !Number.isNaN(maxValue) &&
+    Number.isFinite(minValue) &&
+    Number.isFinite(maxValue)
 
-  mouseLeaveDatamap() {
-    this.setState({
-      isInfoWindowActive: false,
-    })
-  }
-
-  mouseEnterOnState(name: string, value: number) {
-    this.setState({
-      activeState: {
-        name,
-        value,
-      },
-      isInfoWindowActive: true,
-    })
-  }
-
-  render() {
-    return (
-      <>
-        <MapElements
-          topoData={TOPO_INDIA_DATA}
-          mapLayout={this.state.mapLayout}
-          regionData={this.state.regionData}
-          extremeValues={this.calculateExtremeValues(this.state.regionData)}
-          mouseMoveOnDatamap={this.mouseMoveOnDatamap}
-          mouseEnterOnDatamap={this.mouseEnterOnDatamap}
-          mouseLeaveDatamap={this.mouseLeaveDatamap}
-          mouseEnterOnState={this.mouseEnterOnState}
-          infoWindowPos={this.state.infoWindowPosition}
-        />
-        {this.state.mapLayout.hoverName || this.state.activeState.name ? (
-          <HoverInfo
-            active={this.state.isInfoWindowActive}
-            position={this.state.infoWindowPosition}
-            name={this.state.mapLayout.hoverName || this.state.activeState.name}
-            value={this.state.activeState.value}
-            valueTitle={this.state.mapLayout.hoverTitle || ''}
-            hoverComponent={this.props.hoverComponent}
-          />
-        ) : null}
-
-        <TitleStyle />
-      </>
+  const colorScale = d3Scale
+    .scaleLinear()
+    .domain([minValue, maxValue])
+    .interpolate(() =>
+      d3Interpolate.interpolateLab(colorRange[0], colorRange[1])
     )
-  }
+
+  const features = useMemo(() => {
+    const featuresWrap = geoData.features
+
+    return featuresWrap.map((feat) => {
+      const state = feat.properties.ST_NM
+      const obj = { ...feat, id: state }
+      return obj
+    })
+  }, [])
+
+  return (
+    <>
+      <svg
+        style={svgStyle}
+        className="datamaps-india"
+        viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
+        preserveAspectRatio="xMinYMin meet"
+      >
+        <g id="root-svg-group">
+          <DataMap
+            features={features}
+            regionData={regionData}
+            colorScale={colorScale}
+            layout={{
+              noDataColor: mapLayout.noDataColor,
+              borderColor: mapLayout.borderColor,
+              hoverColor: mapLayout.hoverColor,
+              hoverValuePrefix: mapLayout.hoverValuePrefix,
+            }}
+            hoverComponent={hoverComponent}
+          />
+
+          {mapLayout.title && <MapTitle text={mapLayout.title} />}
+
+          {isNotExtremeValuesEmpty && (
+            <MapLegend
+              extremeValues={extremeValues}
+              title={mapLayout.legendTitle}
+              colorRange={colorRange}
+            />
+          )}
+        </g>
+      </svg>
+      <div id="datamaps-tooltip" />
+    </>
+  )
 }
 
-export default DatamapBox
+export default DataMapsIndia

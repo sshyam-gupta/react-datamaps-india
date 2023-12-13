@@ -2,11 +2,7 @@
 
 > Datamaps for india region
 
-[![npm version](https://img.shields.io/npm/v/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india)
-
-[![npm downloads](https://img.shields.io/npm/dw/react-datamaps-india.svg)](https://www.npmjs.com/package/react-datamaps-india)
-
-[![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-datamaps-india)](https://www.npmjs.com/package/react-datamaps-india)
+![npm version](https://img.shields.io/npm/v/react-datamaps-india.svg) ![npm weekly downloads](https://img.shields.io/npm/dw/react-datamaps-india.svg) ![npm monthly downloads](https://img.shields.io/npm/dm/react-datamaps-india.svg) ![npm yearly downloads](https://img.shields.io/npm/dy/react-datamaps-india) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/react-router-prompt) ![npm bundle size](https://img.shields.io/bundlephobia/min/react-router-prompt)
 
 ## ✨ [Demo](https://react-datamaps.netlify.app/)
 
@@ -50,10 +46,9 @@ const Example = () => {
         legendTitle: 'Legend Title',
         startColor: '#FFDAB9',
         endColor: '#FF6347',
-        hoverTitle: 'Count',
+        hoverValuePrefix: 'Count',
         noDataColor: '#f5f5f5',
         borderColor: '#8D8D8D',
-        hoverBorderColor: '#8D8D8D',
         hoverColor: 'green',
       }}
     />
@@ -80,7 +75,6 @@ hoverTitle: 'Count',
 noDataColor: '#f5f5f5',
 borderColor: '#8D8D8D',
 hoverColor: 'green'
-hoverBorderColor: 'green'
 ```
 
 ### Valid States
@@ -93,8 +87,7 @@ Assam
 Bihar
 Chandigarh
 Chhattisgarh
-Dadara & Nagar Haveli
-Daman & Diu
+Dadra and Nagar Haveli and Daman and Diu
 Delhi
 Goa
 Gujarat
@@ -104,6 +97,7 @@ Jammu & Kashmir
 Jharkhand
 Karnataka
 Kerala
+Ladakh
 Lakshadweep
 Madhya Pradesh
 Maharashtra
