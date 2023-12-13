@@ -11,7 +11,7 @@ import MapTitle from './components/MapTitle'
 
 const svgStyle: SvgStyle = {
   display: 'inline-block',
-  position: 'absolute',
+  position: 'relative',
   top: 0,
   left: 0,
 }
@@ -64,6 +64,7 @@ function DataMapsIndia({
     <>
       <svg
         style={svgStyle}
+        className="datamaps-india"
         viewBox={`0 0 ${MAP_WIDTH} ${MAP_HEIGHT}`}
         preserveAspectRatio="xMinYMin meet"
       >

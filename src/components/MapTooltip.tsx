@@ -3,13 +3,14 @@ import { StateToolTip } from '../types'
 
 function MapTooltip(props: StateToolTip) {
   const HoverComponent = props.hoverComponent
+  const e = props.mouseEvent
 
   return createPortal(
     <>
       <div
         style={{
-          top: props.mouseEvent?.clientY - 150,
-          left: props.mouseEvent?.clientX - 100,
+          top: e.pageY - 75,
+          left: e.pageX,
           position: 'absolute',
         }}
         className="state-tooltip"
@@ -43,7 +44,7 @@ function MapTooltip(props: StateToolTip) {
           }
         `}</style>
     </>,
-    document.getElementById('datamaps-tooltip') as HTMLDivElement
+    document.querySelector('body') as HTMLBodyElement
   )
 }
 
