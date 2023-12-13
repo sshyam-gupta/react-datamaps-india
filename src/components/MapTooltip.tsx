@@ -8,8 +8,8 @@ function MapTooltip(props: StateToolTip) {
     <>
       <div
         style={{
-          top: props.mouseEvent?.pageY - 150,
-          left: props.mouseEvent?.pageX - 100,
+          top: props.mouseEvent?.clientY - 150,
+          left: props.mouseEvent?.clientX - 100,
           position: 'absolute',
         }}
         className="state-tooltip"
